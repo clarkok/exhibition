@@ -43,15 +43,27 @@ class Ajax extends CI_Controller {
 
         $this->load->library('upload', $config);
 
-        if ($this->upload->do_upload()) {
-            $file_desc = $this->upload->data()['file'];
+        if ($this->upload->do_upload('file')) {
+            $file_desc = $this->upload->data('file');
             $item['title'] = $this->input->post('title');
             $item['detail'] = $this->input->post('detail');
             $item['author'] = $this->input->post('author');
-            $item['time'] = time();
+            $item['time'] = date('Y-m-d H:i:s');
             $item['original'] = $file_desc['full_path'];
 
-            $this->Item->add_item($item);
+            $error = $this->Item->add_item((object)$item);
+            if (strlen($error)) {
+                $data['code'] = 1;
+                $data['error'] = $error;
+            }
+            else
+                $data['code'] = 0;
+
+            $pass['data'] = $data;
+            $this->load->view(
+                'json',
+                $pass
+            );
         }
         else {
             $pass['data'] = array(
@@ -63,5 +75,9 @@ class Ajax extends CI_Controller {
                 $pass
             );
         }
+    }
+
+    function test_upload() {
+        $this->load->view('upload');
     }
 }

@@ -3,6 +3,7 @@
 class Item extends CI_Model {
     const ITEM_PER_PAGE = 10;
     const WIDTH = 500;
+    const HEIGHT = 600;
 
     function __construct () {
         parent::__construct();
@@ -14,7 +15,7 @@ class Item extends CI_Model {
 
         $this->db->order_by('id', 'desc');
         $this->db->select('id, title, author, time, thumbnail');
-        $query = $this->db->select(
+        $query = $this->db->get(
             'exhibition',
             self::ITEM_PER_PAGE,
             self::ITEM_PER_PAGE * $page_id
@@ -24,7 +25,7 @@ class Item extends CI_Model {
     }
 
     function get_detail($item_id) {
-        if (!is_numeric($page_id))
+        if (!is_numeric($item_id))
             $item_id = 0;
 
         $query = $this->db->get_where(
@@ -41,14 +42,18 @@ class Item extends CI_Model {
     }
 
     function add_item($item) {
-        $this->resize_item($item->original);
+        $error = $this->resize_item($item->original);
+        if (strlen($error))
+            return $error;
         $item->thumbnail = $this->get_thumbnail($item->original);
 
         $this->db->insert('exhibition', $item);
+
+        return null;
     }
 
     function get_thumbnail($original) {
-        $ex_post = strrpos($original, '.');
+        $ex_pos = strrpos($original, '.');
 
         $ret = substr($original, 0, $ex_pos) 
             . '_thumb' 
@@ -63,8 +68,9 @@ class Item extends CI_Model {
         $config['create_thumb'] = TRUE;
         $config['maintain_ratio'] = TRUE;
         $config['width'] = self::WIDTH;
+        $config['height'] = self::HEIGHT;
 
-        $this->load->library('image_lib');
+        $this->load->library('image_lib', $config);
 
         if (!$this->image_lib->resize()) {
             return $this->image_lib->display_errors();
