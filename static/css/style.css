@@ -1,0 +1,222 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #eee;
+  font-family: "MicrosoftYaHeiUILight";
+}
+body {
+  padding-top: 200px;
+}
+header {
+  background-color: #ff28a8;
+  height: 200px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+  overflow: hidden;
+  z-index: 10;
+}
+header h1 {
+  color: #eee;
+  font-size: 200px;
+  margin: 0;
+  position: absolute;
+  bottom: -0.18em;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+  font-weight: 300;
+  line-height: 1em;
+  left: 0;
+}
+header nav {
+  line-height: 30px;
+  position: absolute;
+  right: -100%;
+  -webkit-transition: all 0.5s 0.5s;
+  -moz-transition: all 0.5s 0.5s;
+  transition: all 0.5s 0.5s;
+}
+header nav a {
+  display: inline-block;
+  margin-right: 1em;
+  color: #fff;
+  text-decoration: none;
+}
+header.thin {
+  height: 30px;
+  background-color: #bf0c9d;
+}
+header.thin h1 {
+  font-size: 24px;
+  bottom: 0;
+  left: 1em;
+  line-height: 30px;
+}
+header.thin nav {
+  right: 0;
+}
+#wrapper {
+  width: 1064px;
+  margin: 2em auto;
+}
+#wrapper .column {
+  display: inline-block;
+  float: left;
+  width: 500px;
+  margin: 0 16px;
+}
+#wrapper .column .block {
+  background-color: #fff;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-bottom: 1em;
+  -webkit-animation: fadein 0.5s ease-out;
+  -moz-animation: fadein 0.5s ease-out;
+  animation: fadein 0.5s ease-out;
+}
+#wrapper .column .block .meta {
+  padding: 1em;
+}
+#wrapper .column .block .meta p {
+  margin: 0;
+}
+#wrapper .column .block .meta .title {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+#wrapper .column .block .meta .author {
+  color: #aaa;
+}
+#wrapper .column .block .meta .time {
+  color: #aaa;
+  float: right;
+}
+.img-wrapper {
+  min-height: 300px;
+  position: relative;
+}
+.progress {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  overflow: hidden;
+  display: none;
+  top: 0;
+  left: 0;
+}
+.progress.show {
+  display: block;
+}
+.progress.show .first-circle-container,
+.progress.show .second-circle-container {
+  width: 100px;
+  height: 200px;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-transform-origin: 100% 50%;
+  -moz-transform-origin: 100% 50%;
+  transform-origin: 100% 50%;
+}
+.progress.show .first-circle-color,
+.progress.show .second-circle-color {
+  background-color: #ff28a8;
+  width: 200px;
+  height: 200px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.progress.show .first-circle-center-mask,
+.progress.show .second-circle-center-mask {
+  background-color: #fff;
+  width: 160px;
+  height: 160px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+.progress.show .first-circle-mask {
+  background-color: #fff;
+  width: 100px;
+  height: 200px;
+  position: absolute;
+  top: -10px;
+  -webkit-transform-origin: 100% 50%;
+  -moz-transform-origin: 100% 50%;
+  transform-origin: 100% 50%;
+  border-top: 10px solid #fff;
+  border-bottom: 10px solid #fff;
+}
+.progress.show .begin-circle,
+.progress.show .end-circle {
+  background-color: #ff28a8;
+  width: 20px;
+  height: 20px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  position: absolute;
+}
+.progress.show .begin-circle,
+.progress.show .end-circle {
+  top: 10px;
+  left: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
+}
+.progress.show .second-circle-container {
+  display: none;
+}
+.progress.show.more-than-half .second-circle-container {
+  display: block;
+}
+.progress.show.more-than-half .first-circle-mask {
+  display: none;
+}
+@-moz-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

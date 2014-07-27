@@ -1,0 +1,206 @@
+transition()
+    -webkit-transition: arguments
+    -moz-transition: arguments
+    transition: arguments
+
+box-sizing()
+    -webkit-box-sizing: arguments
+    -moz-box-sizing: arguments
+    box-sizing: arguments
+
+border-radius()
+    -webkit-border-radius: arguments
+    -moz-border-radius: arguments
+    border-radius: arguments
+
+transform-origin()
+    -webkit-transform-origin: arguments
+    -moz-transform-origin: arguments
+    transform-origin: arguments
+
+transform()
+    -webkit-transform: arguments
+    -moz-transform: arguments
+    transform: arguments
+
+circle-progress(front = #FF28A8, back = white, radius = 100px, depth = 20px)
+    width: 2 * radius
+    height: 2 * radius
+    position: absolute
+    overflow: hidden
+    display: none
+
+    &.show
+        display: block
+
+        .first-circle-container, .second-circle-container
+            width: radius
+            height: 2 * radius
+            overflow: hidden;
+            position: absolute
+            left: 0
+            top: 0
+            transform-origin: 100% 50%
+
+        .first-circle-color, .second-circle-color
+            background-color: front
+            width: 2 * radius
+            height: 2 * radius
+            border-radius: radius
+            position: absolute
+            left: 0
+            top: 0
+
+        .first-circle-center-mask, .second-circle-center-mask
+            background-color: back
+            width: 2 * (radius - depth)
+            height: 2 * (radius - depth)
+            border-radius: radius
+            position: absolute
+            left: depth
+            top: depth
+
+        .first-circle-mask
+            background-color: back
+            width: radius
+            height: 2 * radius
+            position: absolute
+            top: -10px
+            transform-origin: 100% 50%
+            border-top: 10px solid white
+            border-bottom: 10px solid white
+
+        .begin-circle, .end-circle
+            background-color: front
+            width: depth
+            height: depth
+            border-radius: 0.5 * depth
+            position: absolute
+
+        .begin-circle, .end-circle
+            top: 0.5 * depth
+            left: 50%
+            margin-left: -0.5 * depth
+            margin-top: -0.5 * depth
+
+        .second-circle-container
+            display: none
+
+        &.more-than-half
+            .second-circle-container
+                display: block
+            .first-circle-mask
+                display: none
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+animation()
+    -webkit-animation: arguments
+    -moz-animation: arguments
+    animation: arguments
+
+html, body
+    margin: 0
+    padding: 0
+    background-color: #eee;
+    font-family: "MicrosoftYaHeiUILight"
+
+body
+    padding-top: 200px;
+
+header
+    background-color: #FF28A8
+    height: 200px
+    width: 100%
+    top: 0
+    left: 0
+    position: fixed
+    transition: all .5s
+    overflow: hidden
+    z-index: 10
+
+    h1
+        color: #eee
+        font-size: 200px
+        margin: 0
+        position: absolute
+        bottom: -.18em
+        transition: all .5s
+        font-weight: 300
+        line-height: 1em
+        left: 0
+
+    nav
+        line-height: 30px
+        position: absolute
+        right: -100%
+        transition: all .5s .5s
+
+        a
+            display: inline-block;
+            margin-right: 1em
+            color: white;
+            text-decoration: none;
+
+header.thin
+    height: 30px
+    background-color: #BF0C9D;
+
+    h1
+        font-size: 24px
+        bottom: 0
+        left: 1em
+        line-height: 30px
+
+    nav
+        right: 0
+
+#wrapper
+    width: 1064px
+    margin: 2em auto
+
+    .column
+        display: inline-block
+        float: left
+        width: 500px
+        margin: 0 16px
+
+        .block
+            background-color: white
+            box-sizing: border-box
+            margin-bottom: 1em
+            animation: fadein .5s ease-out
+
+            .meta
+                padding: 1em
+
+                p
+                    margin: 0;
+
+                .title
+                    font-size: 1.5em
+                    font-weight: 700
+
+                .author
+                    color: #aaa
+
+                .time
+                    color: #aaa
+                    float: right
+
+.img-wrapper
+    min-height: 300px
+    position: relative
+
+.progress
+    circle-progress()
+    top: 0
+    left: 0

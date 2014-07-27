@@ -3,7 +3,6 @@
 class Item extends CI_Model {
     const ITEM_PER_PAGE = 10;
     const WIDTH = 500;
-    const HEIGHT = 600;
 
     function __construct () {
         parent::__construct();
@@ -14,7 +13,7 @@ class Item extends CI_Model {
             $page_id = 0;
 
         $this->db->order_by('id', 'desc');
-        $this->db->select('id, title, author, time, thumbnail');
+        $this->db->select('id, title, author, time, width, height');
         $query = $this->db->get(
             'exhibition',
             self::ITEM_PER_PAGE,
@@ -42,33 +41,27 @@ class Item extends CI_Model {
     }
 
     function add_item($item) {
-        $error = $this->resize_item($item->original);
+        $error = $this->resize_item(
+            $item->upload_path,
+            $item->width,
+            $item->height
+        );
         if (strlen($error))
             return $error;
-        $item->thumbnail = $this->get_thumbnail($item->original);
 
+        unset($item->upload_path);
         $this->db->insert('exhibition', $item);
 
         return null;
     }
 
-    function get_thumbnail($original) {
-        $ex_pos = strrpos($original, '.');
-
-        $ret = substr($original, 0, $ex_pos) 
-            . '_thumb' 
-            . substr($original, $ex_pos);
-
-        return $ret;
-    }
-
-    function resize_item($origin) {
+    function resize_item($origin, $width, $height) {
         $config['image_library'] = 'gd2';
         $config['source_image'] = $origin;
         $config['create_thumb'] = TRUE;
         $config['maintain_ratio'] = TRUE;
         $config['width'] = self::WIDTH;
-        $config['height'] = self::HEIGHT;
+        $config['height'] = $height * self::WIDTH / $width;
 
         $this->load->library('image_lib', $config);
 
