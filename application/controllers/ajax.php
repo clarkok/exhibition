@@ -12,23 +12,25 @@ class Ajax extends CI_Controller {
 
     function page($page_id) {
         $data = $this->Item->get_page($page_id);
+        $pass['data'] = array(
+            'code' => 0,
+            'data' => $data
+        );
         $this->load->view(
             'json',
-            array(
-                'code' => 0,
-                'data' => $data
-            )
+            $pass
         );
     }
 
     function item($id) {
         $data = $this->Item->get_detail($id);
+        $pass['data'] = array(
+            'code' => 0,
+            'data' => $data
+        );
         $this->load->view(
             'json',
-            array(
-                'code' => 0,
-                'data' => $data
-            )
+            $pass
         );
     }
 
@@ -48,14 +50,17 @@ class Ajax extends CI_Controller {
             $item['author'] = $this->input->post('author');
             $item['time'] = time();
             $item['original'] = $file_desc['full_path'];
+
+            $this->Item->add_item($item);
         }
         else {
+            $pass['data'] = array(
+                'code' => 1,
+                'error' => $this->upload->display_errors()
+            );
             $this->load->view(
                 'json',
-                array(
-                    'code' => 1,
-                    'error' => $this->upload->display_errors()
-                )
+                $pass
             );
         }
     }
