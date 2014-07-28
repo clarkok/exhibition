@@ -47,6 +47,7 @@ ImgLoader.prototype.start_modern = function () {
     xhr.addEventListener(
         'progress',
         function (e) {
+            console.log('progress ', e.loded / e.total);
             _this.progress.animate_to(e.loded / e.total);
         },
         false
