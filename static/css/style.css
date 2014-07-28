@@ -479,7 +479,7 @@ header.thin nav {
   color: #ff28a8;
 }
 body.ie .detail-item {
-  opacity: 1;
+  opacity: 1 !important;
   -webkit-transform: rotate(0);
   -moz-transform: rotate(0);
   transform: rotate(0);
