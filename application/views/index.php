@@ -8,7 +8,7 @@
 <!--[if lt IE 10]><body class="ie"><![endif]-->
 <!--[if gt IE 9]><body><![endif]-->
 <!--[if !IE]>--><body><!--<![endif]-->
-        <header class="thin">
+        <header>
             <h1>Exhibition</h1>
             <nav>
                 <a href="http://share.myqsc.com/">Share</a>
