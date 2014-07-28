@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Item extends CI_Model {
-    const ITEM_PER_PAGE = 10;
+    const ITEM_PER_PAGE = 5;
     const WIDTH = 500;
 
     function __construct () {
@@ -10,7 +10,7 @@ class Item extends CI_Model {
 
     function get_page($page_id) {
         if (!is_numeric($page_id))
-            $page_id = 0;
+            return array();
 
         $this->db->order_by('id', 'desc');
         $this->db->select('id, title, author, time, width, height');
@@ -25,7 +25,7 @@ class Item extends CI_Model {
 
     function get_detail($item_id) {
         if (!is_numeric($item_id))
-            $item_id = 0;
+            return 0;
 
         $query = $this->db->get_where(
             'exhibition',

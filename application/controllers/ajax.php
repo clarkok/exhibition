@@ -12,6 +12,11 @@ class Ajax extends CI_Controller {
 
     function page($page_id) {
         $data = $this->Item->get_page($page_id);
+
+        foreach ($data as &$item) {
+            $item->thumb = site_url('/ajax/thumb/' . $item->id);
+        }
+
         $pass['data'] = array(
             'code' => 0,
             'data' => $data
@@ -24,6 +29,10 @@ class Ajax extends CI_Controller {
 
     function item($id) {
         $data = $this->Item->get_detail($id);
+        if ($data) {
+            $data->full = site_url('/ajax/full/' . $data->id);
+            unset($data->filename);
+        }
         $pass['data'] = array(
             'code' => 0,
             'data' => $data
@@ -42,6 +51,22 @@ class Ajax extends CI_Controller {
         return $ret;
     }
 
+    function load_file_origin($path) {
+        header('Content-type: ' . $this->get_mime_type($path));
+        header('Content-Length: ' . filesize($path));
+        readfile($path);
+    }
+
+    function load_file_base64($path) {
+        $file = fopen($path, 'r');
+        $data = base64_encode(fread($file, filesize($path)));
+
+        header("Content-Length: " . strlen($data));
+        header("Content-type: " . $this->get_mime_type($path));
+
+        echo $data;
+    }
+
     function full($id) {
         $data = $this->Item->get_detail($id);
 
@@ -49,10 +74,10 @@ class Ajax extends CI_Controller {
             die();
 
         $file_name = './uploads/' . $data->filename;
-        $file_size = filesize($file_name);
-        header("Content-Length: " . $file_size);
-        header("Content-type: " . $this->get_mime_type($file_name));
-        readfile($file_name);
+        if (isset($_GET['base64']))
+            $this->load_file_base64($file_name);
+        else
+            $this->load_file_origin($file_name);
     }
 
     function thumb($id) {
@@ -62,10 +87,10 @@ class Ajax extends CI_Controller {
             die();
 
         $file_name = './uploads/' . $this->get_thumbnail($data->filename);
-        $file_size = filesize($file_name);
-        header("Content-Length: " . $file_size);
-        header("Content-type: " . $this->get_mime_type($file_name));
-        readfile($file_name);
+        if (isset($_GET['base64']))
+            $this->load_file_base64($file_name);
+        else
+            $this->load_file_origin($file_name);
     }
 
     function get_thumbnail($original) {

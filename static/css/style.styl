@@ -23,12 +23,62 @@ transform()
     -moz-transform: arguments
     transform: arguments
 
+animation()
+    -webkit-animation: arguments
+    -moz-animation: arguments
+    animation: arguments
+
+animation-fill-mode()
+    -webkit-animation-fill-mode: arguments
+    -moz-animation-fill-mode: arguments
+    animation-fill-mode: arguments
+
+@keyframes center-mask-fadeout {
+    from {
+    }
+
+    to {
+        width: 0
+        height: 0
+        margin-left: 0
+        margin-top: 0
+    }
+}
+
+@keyframes color-fadeout {
+    from {
+    }
+
+    to {
+        width: 0
+        height: 0
+        margin-left: 0
+        margin-top: 0
+        opacity: 0
+    }
+}
+
 circle-progress(front = #FF28A8, back = white, radius = 100px, depth = 20px)
     width: 2 * radius
     height: 2 * radius
     position: absolute
+    margin-left: - radius
+    margin-top: - radius
     overflow: hidden
     display: none
+
+    &.finish
+
+        .first-circle-center-mask, .second-circle-center-mask
+            animation: center-mask-fadeout .2s ease-out
+            animation-fill-mode: forwards
+
+        .first-circle-color, .second-circle-color
+            animation: color-fadeout .4s ease-out .1s
+            animation-fill-mode: forwards
+
+        .begin-circle, .end-circle
+            display: none;
 
     &.show
         display: block
@@ -48,8 +98,10 @@ circle-progress(front = #FF28A8, back = white, radius = 100px, depth = 20px)
             height: 2 * radius
             border-radius: radius
             position: absolute
-            left: 0
-            top: 0
+            left: 100%
+            top: 50%
+            margin-left: - radius
+            margin-top: - radius
 
         .first-circle-center-mask, .second-circle-center-mask
             background-color: back
@@ -57,8 +109,10 @@ circle-progress(front = #FF28A8, back = white, radius = 100px, depth = 20px)
             height: 2 * (radius - depth)
             border-radius: radius
             position: absolute
-            left: depth
-            top: depth
+            left: 50%
+            top: 50%
+            margin-left: - (radius - depth);
+            margin-top: - (radius - depth);
 
         .first-circle-mask
             background-color: back
@@ -101,11 +155,6 @@ circle-progress(front = #FF28A8, back = white, radius = 100px, depth = 20px)
         opacity: 1;
     }
 }
-
-animation()
-    -webkit-animation: arguments
-    -moz-animation: arguments
-    animation: arguments
 
 html, body
     margin: 0
@@ -166,6 +215,7 @@ header.thin
 #wrapper
     width: 1064px
     margin: 2em auto
+    overflow: hidden
 
     .column
         display: inline-block
@@ -176,7 +226,7 @@ header.thin
         .block
             background-color: white
             box-sizing: border-box
-            margin-bottom: 1em
+            margin-bottom: 2em
             animation: fadein .5s ease-out
 
             .meta
@@ -199,6 +249,11 @@ header.thin
 .img-wrapper
     min-height: 300px
     position: relative
+
+    img
+        opacity: 0
+        animation: fadein .5s ease-out .2s
+        animation-fill-mode: forwards
 
 .progress
     circle-progress()
