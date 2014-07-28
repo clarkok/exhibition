@@ -15,24 +15,9 @@ class Ajax extends CI_Controller {
 
         foreach ($data as &$item) {
             $item->thumb = site_url('/ajax/thumb/' . $item->id);
+            $item->full = site_url('/ajax/full/' . $item->id);
         }
 
-        $pass['data'] = array(
-            'code' => 0,
-            'data' => $data
-        );
-        $this->load->view(
-            'json',
-            $pass
-        );
-    }
-
-    function item($id) {
-        $data = $this->Item->get_detail($id);
-        if ($data) {
-            $data->full = site_url('/ajax/full/' . $data->id);
-            unset($data->filename);
-        }
         $pass['data'] = array(
             'code' => 0,
             'data' => $data

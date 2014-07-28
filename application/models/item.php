@@ -13,7 +13,7 @@ class Item extends CI_Model {
             return array();
 
         $this->db->order_by('id', 'desc');
-        $this->db->select('id, title, author, time, width, height');
+        $this->db->select('id, title, author, time, width, height, detail');
         $query = $this->db->get(
             'exhibition',
             self::ITEM_PER_PAGE,

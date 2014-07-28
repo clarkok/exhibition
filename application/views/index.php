@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="<?php echo base_url('static/css/style.css'); ?>">
     </head>
     <body>
-        <header>
+        <header class="thin">
             <h1>Exhibition</h1>
             <nav>
                 <a href="http://share.myqsc.com/">Share</a>
@@ -17,6 +17,34 @@
                 <a href="https://passport.myqsc.com/">求是潮通行证</a>
             </nav>
         </header>
+        <div id="detail-wrapper">
+            <div id="pic-detail">
+                <img src="http://clarkok-mba.local/exhibition/index.php/ajax/full/23" alt="article" />
+            </div>
+            <div id="meta">
+                <div id="back">
+                    ←
+                </div>
+                <ul id="detail">
+                    <li class="detail-item title-i">
+                        <label>标题</label>
+                        <p class="title">The Title</p>
+                    </li>
+                    <li class="detail-item author-i">
+                        <label>作者</label>
+                        <p class="author">The Author</p>
+                    </li>
+                    <li class="detail-item time-i">
+                        <label>时间</label>
+                        <p class="time">The Time</p>
+                    </li>
+                    <li class="detail-item detail-i">
+                        <label>简介</label>
+                        <p class="detail">The Detail</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <div id="wrapper">
             <div class="column">
             </div>
@@ -45,6 +73,8 @@
         <script src="<?php echo base_url('static/js/view.js'); ?>"></script>
         <script src="<?php echo base_url('static/js/model.js'); ?>"></script>
         <script src="<?php echo base_url('static/js/loadingbar.js'); ?>"></script>
+        <script src="<?php echo base_url('static/js/maskctrl.js'); ?>"></script>
+        <script src="<?php echo base_url('static/js/detail.js'); ?>"></script>
         <script src="<?php echo base_url('static/js/controller.js'); ?>"></script>
         <script src="<?php echo base_url('static/js/script.js'); ?>"></script>
     </body>
