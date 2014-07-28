@@ -74,7 +74,7 @@ Progress.prototype.set_end_pos = function (value) {
 
 Progress.prototype.start = function () {
     this.wrapper.addClass('show');
-    this.end_radius = (this.radius + this.wrapper.find('.first-circle-center-mask').width() / 2) / 2;
+    this.end_radius = (this.radius + this.wrapper.find('.center-mask').width() / 2) / 2;
     this.set(0);
 };
 
@@ -155,7 +155,7 @@ Progress.prototype.mk_progress_dom = function (posx, posy) {
     if (posy === undefined)
         posy = '50%';
 
-    return $('<div class="progress"><div class="first-circle-container"><div class="first-circle-color"><div class="first-circle-center-mask"></div></div></div><div class="first-circle-mask"></div><div class="second-circle-container"><div class="second-circle-color"><div class="second-circle-center-mask"></div></div></div><div class="begin-circle"></div><div class="end-circle"></div></div>').css({
+    return $('<div class="progress"><div class="first-circle-container"><div class="first-circle-color"></div></div><div class="first-circle-mask"></div><div class="second-circle-container"><div class="second-circle-color"></div></div><div class="center-mask"></div><div class="begin-circle"></div><div class="end-circle"></div></div>').css({
         left: posx,
         top: posy
     });

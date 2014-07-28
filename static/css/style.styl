@@ -69,7 +69,7 @@ circle-progress(front = #FF28A8, back = white, radius = 100px, depth = 20px)
 
     &.finish
 
-        .first-circle-center-mask, .second-circle-center-mask
+        .center-mask
             animation: center-mask-fadeout .2s ease-out
             animation-fill-mode: forwards
 
@@ -103,7 +103,7 @@ circle-progress(front = #FF28A8, back = white, radius = 100px, depth = 20px)
             margin-left: - radius
             margin-top: - radius
 
-        .first-circle-center-mask, .second-circle-center-mask
+        .center-mask
             background-color: back
             width: 2 * (radius - depth)
             height: 2 * (radius - depth)
