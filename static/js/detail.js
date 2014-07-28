@@ -7,7 +7,8 @@ $('#back').on('click', function () {
 var Detail = function ($block) {
     this.wrapper = $('#detail-wrapper');
     this.block = $block;
-    this.pic_wrapper = this.wrapper.find('#pic-detail').empty();
+    this.wrapper.find('#pic-detail').remove();
+    this.pic_wrapper = $('<div />').attr('id', 'pic-detail');
     this.load_picture();
     this.detail = this.wrapper.find('#detail').empty();
     this.build_detail();
