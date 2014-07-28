@@ -353,16 +353,16 @@ header.thin nav {
   overflow-x: hidden;
   overflow-y: visible;
   z-index: 9;
-  -webkit-transition: all 0 0.5s;
-  -moz-transition: all 0 0.5s;
-  transition: all 0 0.5s;
+  -webkit-transition: height 0 0.5s, background-color 0.5s 0;
+  -moz-transition: height 0 0.5s, background-color 0.5s 0;
+  transition: height 0 0.5s, background-color 0.5s 0;
   background-color: transparent;
 }
 #detail-wrapper.show {
   height: 100%;
-  -webkit-transition: height 0 0;
-  -moz-transition: height 0 0;
-  transition: height 0 0;
+  -webkit-transition: height 0 0, background-color 0.5s 0;
+  -moz-transition: height 0 0, background-color 0.5s 0;
+  transition: height 0 0, background-color 0.5s 0;
   background-color: rgba(0,0,0,0.5);
 }
 #detail-wrapper.show #pic-detail {

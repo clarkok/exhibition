@@ -41,7 +41,7 @@ ImgLoader.prototype.start_modern = function () {
     this.wrapper.append(progress_wrapper);
     this.progress = new Progress(progress_wrapper);
 
-    var xhr = new XMLHttpRequest();
+    var xhr = this.xhr = new XMLHttpRequest();
 
     var _this = this;
 
@@ -109,6 +109,8 @@ ImgLoader.prototype.start_fallback = function () {
 
 ImgLoader.prototype.cancel = function () {
     this.cancelled = true;
+    if (this.xhr)
+        this.xhr.abort();
 };
 
 w.ImgLoader = ImgLoader;
