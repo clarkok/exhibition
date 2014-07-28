@@ -5,7 +5,9 @@
         <title>QSC Exhibition</title>
         <link rel="stylesheet" href="<?php echo base_url('static/css/style.css'); ?>">
     </head>
-    <body>
+<!--[if lt IE 10]><body class="ie"><![endif]-->
+<!--[if gt IE 9]><body><![endif]-->
+<!--[if !IE]>--><body><!--<![endif]-->
         <header class="thin">
             <h1>Exhibition</h1>
             <nav>
