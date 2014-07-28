@@ -7,8 +7,7 @@ $('#back').on('click', function () {
 var Detail = function ($block) {
     this.wrapper = $('#detail-wrapper');
     this.block = $block;
-    this.wrapper.find('#pic-detail').remove();
-    this.pic_wrapper = $('<div />').attr('id', 'pic-detail');
+    this.pic_wrapper = this.wrapper.find('#pic-detail').empty();
     this.load_picture();
     this.detail = this.wrapper.find('#detail').empty();
     this.build_detail();
@@ -66,6 +65,7 @@ Detail.prototype.show = function () {
 
 Detail.prototype.hide = function () {
     this.wrapper.removeClass('show');
+    this.loader.cancel();
 };
 
 w.Detail = Detail;

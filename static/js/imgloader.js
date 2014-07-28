@@ -4,6 +4,7 @@ var ImgLoader = function (url, width, height) {
     this.url = url;
     this.width = width;
     this.height = height;
+    this.cancelled = false;
 };
 
 ImgLoader.prototype.mk_wrapper = function () {
@@ -59,6 +60,8 @@ ImgLoader.prototype.start_modern = function () {
                 1, 
                 1000, 
                 function() {
+                    if (_this.cancelled)
+                        return;
                     _this.progress.finish();
                     _this.wrapper.prepend(
                         $('<img />').attr(
@@ -94,12 +97,18 @@ ImgLoader.prototype.start_fallback = function () {
     var _this = this;
 
     img.onload = function () {
+        if (_this.cancelled)
+            return;
         _this.wrapper.append(
             $('<img />').attr('src', _this.url)
         );
     };
 
     img.src = _this.url;
+};
+
+ImgLoader.prototype.cancel = function () {
+    this.cancelled = true;
 };
 
 w.ImgLoader = ImgLoader;

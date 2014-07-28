@@ -425,10 +425,12 @@ header.thin
     overflow-y: visible
     z-index: 9
     transition: all 0 .5s
+    background-color: transparent
 
     &.show
         height: 100%
-        transition: all 0 0
+        transition: height 0 0
+        background-color: rgba(0, 0, 0, 0.5)
 
         #pic-detail
             left: 0
