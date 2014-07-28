@@ -438,6 +438,7 @@ header.thin
             img
                 animation: fadein 1s
                 animation-fill-mode: forwards
+                transition: width .5s cubic-bezier(0.19, 1, 0.22, 1), height .5s cubic-bezier(0.19, 1, 0.22, 1), margin-left .5s cubic-bezier(0.19, 1, 0.22, 1), margin-top .5s cubic-bezier(0.19, 1, 0.22, 1)
 
         #meta
             right: 0
@@ -451,6 +452,9 @@ header.thin
         left: -100%
         transition: all .5s
         z-index: 9
+
+        img
+            position: absolute
 
     #meta
         width: 300px
@@ -510,4 +514,3 @@ header.thin
                 display: block
                 border-bottom: 1px solid #FF28A8
                 color: #FF28A8
-

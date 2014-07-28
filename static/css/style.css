@@ -375,6 +375,9 @@ header.thin nav {
   -webkit-animation-fill-mode: forwards;
   -moz-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
+  -webkit-transition: width 0.5s cubic-bezier(0.19, 1, 0.22, 1), height 0.5s cubic-bezier(0.19, 1, 0.22, 1), margin-left 0.5s cubic-bezier(0.19, 1, 0.22, 1), margin-top 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  -moz-transition: width 0.5s cubic-bezier(0.19, 1, 0.22, 1), height 0.5s cubic-bezier(0.19, 1, 0.22, 1), margin-left 0.5s cubic-bezier(0.19, 1, 0.22, 1), margin-top 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: width 0.5s cubic-bezier(0.19, 1, 0.22, 1), height 0.5s cubic-bezier(0.19, 1, 0.22, 1), margin-left 0.5s cubic-bezier(0.19, 1, 0.22, 1), margin-top 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 #detail-wrapper.show #meta {
   right: 0;
@@ -390,6 +393,9 @@ header.thin nav {
   -moz-transition: all 0.5s;
   transition: all 0.5s;
   z-index: 9;
+}
+#detail-wrapper #pic-detail img {
+  position: absolute;
 }
 #detail-wrapper #meta {
   width: 300px;

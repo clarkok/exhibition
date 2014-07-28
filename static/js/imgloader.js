@@ -1,10 +1,11 @@
 (function (w, $) {
 
-var ImgLoader = function (url, width, height) {
+var ImgLoader = function (url, width, height, callback) {
     this.url = url;
     this.width = width;
     this.height = height;
     this.cancelled = false;
+    this.callback = callback;
 };
 
 ImgLoader.prototype.mk_wrapper = function () {
@@ -72,6 +73,8 @@ ImgLoader.prototype.start_modern = function () {
                                     xhr.responseText
                         )
                     );
+                    if (_this.callback)
+                        _this.callback.call(w);
                 }
             );
         },
@@ -99,6 +102,8 @@ ImgLoader.prototype.start_fallback = function () {
     img.onload = function () {
         if (_this.cancelled)
             return;
+        if (_this.callback)
+            _this.callback.call(w);
         _this.wrapper.append(
             $('<img />').attr('src', _this.url)
         );

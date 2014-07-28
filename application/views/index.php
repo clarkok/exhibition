@@ -75,6 +75,7 @@
         <script src="<?php echo base_url('static/js/loadingbar.js'); ?>"></script>
         <script src="<?php echo base_url('static/js/maskctrl.js'); ?>"></script>
         <script src="<?php echo base_url('static/js/detail.js'); ?>"></script>
+        <script src="<?php echo base_url('static/js/imgviewer.js'); ?>"></script>
         <script src="<?php echo base_url('static/js/controller.js'); ?>"></script>
         <script src="<?php echo base_url('static/js/script.js'); ?>"></script>
     </body>

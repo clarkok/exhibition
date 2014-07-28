@@ -15,19 +15,26 @@ var Detail = function ($block) {
 };
 
 Detail.prototype.load_picture = function () {
+    var _this = this;
+
     this.loader = new ImgLoader(
         this.block.data('full'),
         this.block.data('width'),
-        this.block.data('height')
+        this.block.data('height'),
+        function () {
+            _this.viewer = new ImgViewer(
+                _this.pic_wrapper,
+                _this.block.data('width'),
+                _this.block.data('height')
+            );
+        }
     );
     
     this.loader.wrapper = this.pic_wrapper;
 
-    var _this = this;
-
     setTimeout(function () {
         _this.loader.start();
-    }, 1000);
+    }, 500);
 };
 
 Detail.prototype.build_detail = function () {
