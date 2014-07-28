@@ -96,20 +96,16 @@ ImgLoader.prototype.start_modern = function () {
 };
 
 ImgLoader.prototype.start_fallback = function () {
-    var img = new Image();
     var _this = this;
-
-    img.onload = function () {
+    var img = $('<img />').attr({
+        src: this.url
+    }).appendTo(this.wrapper)
+    .on('load', function () {
         if (_this.cancelled)
             return;
         if (_this.callback)
             _this.callback.call(w);
-        _this.wrapper.append(
-            $('<img />').attr('src', _this.url)
-        );
-    };
-
-    img.src = _this.url;
+    });
 };
 
 ImgLoader.prototype.cancel = function () {

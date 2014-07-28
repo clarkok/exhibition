@@ -52,6 +52,7 @@ var ImgViewer = function ($wrapper, width, height) {
 };
 
 ImgViewer.prototype.set_location = function (x, y) {
+    console.log('lcoation', x, y);
     this.image.css({
         left: x + 'px',
         top: y + 30 + 'px'
@@ -59,6 +60,7 @@ ImgViewer.prototype.set_location = function (x, y) {
 };
 
 ImgViewer.prototype.set_size = function (w, h) {
+    console.log('size', w, h);
     this.image.css({
         width: (this.width = w) + 'px',
         height: (this.height = h) + 'px',

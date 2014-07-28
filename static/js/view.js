@@ -132,14 +132,11 @@ View.prototype.unlock_header = function () {
 };
 
 View.prototype.wheel_block = function (e) {
-    console.log('block');
     e.preventDefault();
     e.stopPropagation();
 };
 
 View.prototype.key_block = function (e) {
-    console.log('block');
-    console.log(e.which);
     if ([37, 38, 39, 40].indexOf(e.which) != -1) {
         e.preventDefault();
         e.stopPropagation();
