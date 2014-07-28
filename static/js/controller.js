@@ -5,6 +5,7 @@ var Controller = function () {
 
     this.view = new View();
     this.model = new Model();
+    this.loading = new LoadingBar();
     this.next_page = 0;
 };
 
@@ -20,15 +21,17 @@ Controller.prototype.load_next_page = function (e) {
             w.bottom_event_lock = false;
         }
         else if (data.data.length === 0) {
-            alert('No items');
+            _this.loading.no_item_show();
         }
         else {
+            _this.loading.hide();
             _this.next_page ++;
             _this.view.append(data.data);
             w.bottom_event_lock = false;
         }
     };
 
+    _this.loading.show();
     _this.model.get_page(_this.next_page, callback);
 };
 

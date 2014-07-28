@@ -60,7 +60,7 @@ ImgLoader.prototype.start_modern = function () {
                 1000, 
                 function() {
                     _this.progress.finish();
-                    _this.wrapper.append(
+                    _this.wrapper.prepend(
                         $('<img />').attr(
                             'src',
                             'data:' + 
