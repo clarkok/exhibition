@@ -485,6 +485,9 @@ body.ie .detail-item {
   transform: rotate(0);
   top: 0;
 }
+body.ie img {
+  opacity: 1 !important;
+}
 @-moz-keyframes center-mask-fadeout {
   to {
     width: 0;
