@@ -2,11 +2,11 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: #eee;
-  font-family: "MicrosoftYaHeiUILight";
 }
 body {
   padding-top: 200px;
+  background-color: #eee;
+  font-family: "MicrosoftYaHeiUILight" "MicrosoftYaHei";
 }
 header {
   background-color: #ff28a8;
