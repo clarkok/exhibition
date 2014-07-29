@@ -130,18 +130,18 @@ header.thin nav {
   overflow: visible !important;
 }
 .progress.finish .center-mask {
-  -webkit-animation: center-mask-fadeout 0.2s ease-out;
-  -moz-animation: center-mask-fadeout 0.2s ease-out;
-  animation: center-mask-fadeout 0.2s ease-out;
+  -webkit-animation: center-mask-fadeout 0.3s ease-out;
+  -moz-animation: center-mask-fadeout 0.3s ease-out;
+  animation: center-mask-fadeout 0.3s ease-out;
   -webkit-animation-fill-mode: forwards;
   -moz-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
 }
 .progress.finish .first-circle-color,
 .progress.finish .second-circle-color {
-  -webkit-animation: color-fadeout 0.4s ease-out 0.1s;
-  -moz-animation: color-fadeout 0.4s ease-out 0.1s;
-  animation: color-fadeout 0.4s ease-out 0.1s;
+  -webkit-animation: color-fadeout 0.5s ease-out 0.1s;
+  -moz-animation: color-fadeout 0.5s ease-out 0.1s;
+  animation: color-fadeout 0.5s ease-out 0.1s;
   -webkit-animation-fill-mode: forwards;
   -moz-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
@@ -521,14 +521,14 @@ body.ie img {
   }
 }
 @-moz-keyframes color-fadeout {
-  50% {
-    width: 220px;
-    height: 220px;
-    margin-left: -110px;
-    margin-top: -110px;
-    -webkit-border-radius: 110px;
-    -moz-border-radius: 110px;
-    border-radius: 110px;
+  70% {
+    width: 300px;
+    height: 300px;
+    margin-left: -150px;
+    margin-top: -150px;
+    -webkit-border-radius: 150px;
+    -moz-border-radius: 150px;
+    border-radius: 150px;
   }
   to {
     width: 0;
@@ -538,14 +538,14 @@ body.ie img {
   }
 }
 @-webkit-keyframes color-fadeout {
-  50% {
-    width: 220px;
-    height: 220px;
-    margin-left: -110px;
-    margin-top: -110px;
-    -webkit-border-radius: 110px;
-    -moz-border-radius: 110px;
-    border-radius: 110px;
+  70% {
+    width: 300px;
+    height: 300px;
+    margin-left: -150px;
+    margin-top: -150px;
+    -webkit-border-radius: 150px;
+    -moz-border-radius: 150px;
+    border-radius: 150px;
   }
   to {
     width: 0;
@@ -555,14 +555,14 @@ body.ie img {
   }
 }
 @-o-keyframes color-fadeout {
-  50% {
-    width: 220px;
-    height: 220px;
-    margin-left: -110px;
-    margin-top: -110px;
-    -webkit-border-radius: 110px;
-    -moz-border-radius: 110px;
-    border-radius: 110px;
+  70% {
+    width: 300px;
+    height: 300px;
+    margin-left: -150px;
+    margin-top: -150px;
+    -webkit-border-radius: 150px;
+    -moz-border-radius: 150px;
+    border-radius: 150px;
   }
   to {
     width: 0;
@@ -572,14 +572,14 @@ body.ie img {
   }
 }
 @keyframes color-fadeout {
-  50% {
-    width: 220px;
-    height: 220px;
-    margin-left: -110px;
-    margin-top: -110px;
-    -webkit-border-radius: 110px;
-    -moz-border-radius: 110px;
-    border-radius: 110px;
+  70% {
+    width: 300px;
+    height: 300px;
+    margin-left: -150px;
+    margin-top: -150px;
+    -webkit-border-radius: 150px;
+    -moz-border-radius: 150px;
+    border-radius: 150px;
   }
   to {
     width: 0;

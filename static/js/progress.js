@@ -135,7 +135,8 @@ Progress.prototype.animate_to = function (new_value, duration, callback) {
         }
         else {
             _this.set(new_value);
-            callback.call(_this);
+            if (callback)
+                callback.call(_this);
             _this.timmer = undefined;
         }
     };
