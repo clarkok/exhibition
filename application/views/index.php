@@ -69,21 +69,6 @@
         <script type="text/javascript">
             window.site_url = '<?php echo site_url(); ?>';
         </script>
-        <?php if (isset($_GET['debug'])): ?>
-            <script src="<?php echo base_url('static/js/jquery.js'); ?>"></script>
-            <script src="<?php echo base_url('static/js/progress.js'); ?>"></script>
-            <script src="<?php echo base_url('static/js/imgloader.js'); ?>"></script>
-            <script src="<?php echo base_url('static/js/view.js'); ?>"></script>
-            <script src="<?php echo base_url('static/js/model.js'); ?>"></script>
-            <script src="<?php echo base_url('static/js/loadingbar.js'); ?>"></script>
-            <script src="<?php echo base_url('static/js/maskctrl.js'); ?>"></script>
-            <script src="<?php echo base_url('static/js/detail.js'); ?>"></script>
-            <script src="<?php echo base_url('static/js/imgviewer.js'); ?>"></script>
-            <script src="<?php echo base_url('static/js/router.js'); ?>"></script>
-            <script src="<?php echo base_url('static/js/controller.js'); ?>"></script>
-            <script src="<?php echo base_url('static/js/script.js'); ?>"></script>
-        <?php else: ?>
-            <script src="<?php echo base_url('static/exhibition.js'); ?>"></script>
-        <?php endif ?>
+        <script src="<?php echo base_url('static/exhibition.js'); ?>"></script>
     </body>
 </html>
