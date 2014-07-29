@@ -521,7 +521,7 @@ body.ie img {
   }
 }
 @-moz-keyframes color-fadeout {
-  50% {
+  70% {
     width: 300px;
     height: 300px;
     margin-left: -150px;
@@ -538,7 +538,7 @@ body.ie img {
   }
 }
 @-webkit-keyframes color-fadeout {
-  50% {
+  70% {
     width: 300px;
     height: 300px;
     margin-left: -150px;
@@ -555,7 +555,7 @@ body.ie img {
   }
 }
 @-o-keyframes color-fadeout {
-  50% {
+  70% {
     width: 300px;
     height: 300px;
     margin-left: -150px;
@@ -572,7 +572,7 @@ body.ie img {
   }
 }
 @keyframes color-fadeout {
-  50% {
+  70% {
     width: 300px;
     height: 300px;
     margin-left: -150px;
