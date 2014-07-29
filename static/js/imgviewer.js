@@ -1,7 +1,6 @@
 (function (w, $) {
 
 var ImgViewer = function ($wrapper, width, height) {
-    console.log(width, height);
     this.wrapper = $wrapper;
     this.image = $wrapper.find('img');
     this.original_width = width;
@@ -36,10 +35,7 @@ var ImgViewer = function ($wrapper, width, height) {
         _this.recover();
     }).trigger('resize');
 
-    $wrapper.on('relocate', function () {
-        _this.locate();
-    })
-    .on('mousemove', function (e) {
+    $wrapper.on('mousemove', function (e) {
         var offset = $(this).offset();
         var x = e.pageX - offset.left,
             y = e.pageY - offset.top - 30;
@@ -52,7 +48,6 @@ var ImgViewer = function ($wrapper, width, height) {
 };
 
 ImgViewer.prototype.set_location = function (x, y) {
-    console.log('lcoation', x, y);
     this.image.css({
         left: x + 'px',
         top: y + 30 + 'px'
@@ -60,7 +55,6 @@ ImgViewer.prototype.set_location = function (x, y) {
 };
 
 ImgViewer.prototype.set_size = function (w, h) {
-    console.log('size', w, h);
     this.image.css({
         width: (this.width = w) + 'px',
         height: (this.height = h) + 'px',

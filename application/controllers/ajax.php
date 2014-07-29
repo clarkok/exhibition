@@ -28,6 +28,31 @@ class Ajax extends CI_Controller {
         );
     }
 
+    function item($item_id) {
+        $data = $this->Item->get_detail($item_id);
+
+        if ($data) {
+            $data->thumb = site_url('/ajax/thumb/' . $data->id);
+            $data->full = site_url('/ajax/full/' . $data->id);
+            unset($data->filename);
+
+            $pass['data'] = array(
+                'code' => 0,
+                'data' => $data
+            );
+        }
+        else {
+            $pass['data'] = array(
+                'code' => 1,
+                'error' => 'No Such Item'
+            );
+        }
+        $this->load->view(
+            'json',
+            $pass
+        );
+    }
+
     function get_mime_type($filename) {
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
         $ret = finfo_file($finfo, $filename);

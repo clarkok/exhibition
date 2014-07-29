@@ -1,7 +1,12 @@
 (function (w, $) {
 
 $('#back').on('click', function () {
-    $(w).trigger('hide_detail');
+    if (w.back_flag)
+        w.history.go(-1);
+    else {
+        w.back_flag = true;
+        w.location.hash = '';
+    }
 });
 
 var Detail = function ($block) {
