@@ -1,5 +1,7 @@
 (function (w, $) {
 
+var isWebkit = 'WebkitAppearance' in document.documentElement.style;
+
 $('#back').on('click', function () {
     if (w.back_flag)
         w.history.go(-1);
@@ -32,7 +34,8 @@ Detail.prototype.load_picture = function () {
                 _this.block.data('width'),
                 _this.block.data('height')
             );
-            _this.wrapper.addClass('transparent');
+            if (isWebkit)
+                _this.wrapper.addClass('transparent');
             $('body').addClass('detail');
         }
     );
@@ -79,7 +82,8 @@ Detail.prototype.show = function () {
 
 Detail.prototype.hide = function () {
     this.wrapper.removeClass('show transparent');
-    $('body').removeClass('detail');
+    if (isWebkit)
+        $('body').removeClass('detail');
     this.loader.cancel();
 };
 
