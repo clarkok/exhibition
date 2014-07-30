@@ -13,7 +13,7 @@
             <?php if (isset($username)): ?>
             <span class="login">Hi, <?php echo $username; ?></span>
             <?php else :?>
-            <a class="login" href="http://passport.myqsc.com/member/auth?redirect=<?php site_url('/ajax/login'); ?>">立即登录</a>
+            <a class="login" href="http://passport.myqsc.com/member/auth?redirect=<?php echo site_url('/ajax/login'); ?>">立即登录</a>
             <?php endif; ?>
             <nav>
                 <a href="http://share.myqsc.com/">Share</a>
