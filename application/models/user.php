@@ -29,6 +29,7 @@ class User extends CI_Model {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         $result = array(
             'data' => '',
@@ -38,7 +39,7 @@ class User extends CI_Model {
         $response = curl_exec($ch);
 
         $result['error'] = curl_error($ch);
-        $result['data'] = substr($response, curl_getinfo($ch, CURLINFO_HEADER_SIZE));
+        $result['data'] = $response;
 
         return $result;
     }

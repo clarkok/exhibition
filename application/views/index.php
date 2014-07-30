@@ -10,13 +10,22 @@
 <!--[if !IE]>--><body><!--<![endif]-->
         <header>
             <h1>Exhibition</h1>
+            <?php if (isset($username)): ?>
+            <span class="login">Hi, <?php echo $username; ?></span>
+            <?php else :?>
+            <a class="login" href="http://passport.myqsc.com/member/auth?redirect=<?php site_url('/ajax/login'); ?>">立即登录</a>
+            <?php endif; ?>
             <nav>
                 <a href="http://share.myqsc.com/">Share</a>
                 <a href="http://notice.myqsc.com/">Notice</a>
                 <a href="http://m.myqsc.com/">Mobile</a>
                 <a href="http://box.myqsc.com/">Box</a>
                 <a href="http://site.myqsc.com/zjuff/">青年电影节</a>
-                <a href="https://passport.myqsc.com/">求是潮通行证</a>
+                <?php if (isset($username)): ?>
+                <span>Hi, <?php echo $username; ?></span>
+                <?php else :?>
+                <a href="http://passport.myqsc.com/member/auth?redirect=<?php echo site_url('/ajax/login'); ?>">登录</a>
+                <?php endif; ?>
             </nav>
         </header>
         <div id="detail-wrapper">
@@ -68,6 +77,7 @@
 
         <script type="text/javascript">
             window.site_url = '<?php echo site_url(); ?>';
+            window.username = <?php echo (isset($username) ? "'" . $username . "'" : 'undefined' ) ?>;
         </script>
         <?php if (isset($_GET['debug'])): ?>
             <script src="<?php echo base_url('static/js/jquery.js'); ?>"></script>

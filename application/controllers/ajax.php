@@ -7,7 +7,26 @@ class Ajax extends CI_Controller {
     }
 
     function index () {
-        $this->load->view('index');
+        $this->load->model('User');
+        $username = $this->User->validate();
+        $data = array();
+        if ($username)
+            $data['username'] = $username;
+        $this->load->view('index', $data);
+    }
+
+    function login () {
+        if ($this->input->post('token')) {
+            $cookie = array(
+                'name'   => 'token',
+                'value'  => $this->input->post('token'),
+                'expire' => 7 * 86500
+            );
+
+            set_cookie($cookie);
+        }
+
+        redirect(site_url(), 'refresh');
     }
 
     function page($page_id) {
