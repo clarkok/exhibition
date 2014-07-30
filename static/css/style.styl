@@ -244,6 +244,15 @@ header.thin
     nav
         right: 0
 
+filter()
+    -webkit-filter: arguments
+    -moz-filter: arguments
+    filter: arguments
+
+body.detail
+    #wrapper
+        filter: blur(10px)
+
 #wrapper
     width: 1064px
     margin: 2em auto 0 auto
@@ -449,7 +458,6 @@ header.thin
     &.show
         height: 100%
         transition: height 0 0, background-color .5s 0
-        background-color: rgba(0, 0, 0, 0.5)
 
         #pic-detail
             left: 0
@@ -461,6 +469,10 @@ header.thin
 
         #meta
             right: 0
+
+    &.transparent
+        #pic-detail, #meta
+            background-color: rgba(200, 200, 200, 0.7)
 
     #pic-detail
         height: 100%

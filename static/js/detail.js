@@ -32,6 +32,8 @@ Detail.prototype.load_picture = function () {
                 _this.block.data('width'),
                 _this.block.data('height')
             );
+            _this.wrapper.addClass('transparent');
+            $('body').addClass('detail');
         }
     );
     
@@ -76,7 +78,8 @@ Detail.prototype.show = function () {
 };
 
 Detail.prototype.hide = function () {
-    this.wrapper.removeClass('show');
+    this.wrapper.removeClass('show transparent');
+    $('body').removeClass('detail');
     this.loader.cancel();
 };
 

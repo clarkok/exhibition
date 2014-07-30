@@ -83,6 +83,11 @@ header.thin h1 {
 header.thin nav {
   right: 0;
 }
+body.detail #wrapper {
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  filter: blur(10px);
+}
 #wrapper {
   width: 1064px;
   margin: 2em auto 0 auto;
@@ -385,7 +390,6 @@ header.thin nav {
   -webkit-transition: height 0 0, background-color 0.5s 0;
   -moz-transition: height 0 0, background-color 0.5s 0;
   transition: height 0 0, background-color 0.5s 0;
-  background-color: rgba(0,0,0,0.5);
 }
 #detail-wrapper.show #pic-detail {
   left: 0;
@@ -403,6 +407,10 @@ header.thin nav {
 }
 #detail-wrapper.show #meta {
   right: 0;
+}
+#detail-wrapper.transparent #pic-detail,
+#detail-wrapper.transparent #meta {
+  background-color: rgba(200,200,200,0.7);
 }
 #detail-wrapper #pic-detail {
   height: 100%;

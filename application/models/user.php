@@ -17,7 +17,10 @@ class User extends CI_Model {
             }
             else {
                 $data = json_decode($res['data']);
-                return $data->username;
+                if (isset($data->username))
+                    return $data->username;
+                else
+                    return false;
             }
         }
         else {
