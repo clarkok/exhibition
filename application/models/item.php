@@ -33,7 +33,8 @@ class Item extends CI_Model {
         );
 
         if ($query->num_rows() > 0) {
-            return $query->result()[0];
+            $result = $query->result();
+            return $result[0];
         }
         else{
             return null;
