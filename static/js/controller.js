@@ -75,3 +75,4 @@ Controller.prototype.hide_detail = function (e) {
 w.Controller = Controller;
 
 })(window, window.jQuery);
+
