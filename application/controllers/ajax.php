@@ -133,7 +133,19 @@ class Ajax extends CI_Controller {
     }
 
     function upload() {
-        // TODO auth
+        $this->load->model('User');
+        $username = $this->User->validate();
+        if (!$username) {
+            $data['code'] = 1;
+            $data['error'] = "尚未登录";
+            $this->load->view(
+                'json',
+                $pass
+            );
+
+            return;
+        }
+
         $config['upload_path'] = './uploads/';
         $config['allowed_types'] = 'gif|jpg|png';
         $config['override'] = TRUE;
@@ -176,9 +188,5 @@ class Ajax extends CI_Controller {
                 $pass
             );
         }
-    }
-
-    function test_upload() {
-        $this->load->view('upload');
     }
 }

@@ -59,7 +59,7 @@
         <div id="upload-mask">
         </div>
         <div id="upload">
-            drop to upload
+            松开鼠标来上传
             <div id="container">
                 <form id="upload-form" method="post" action="<?php echo site_url('/ajax/upload/'); ?>">
                     <div id="upload-img-wrapper">

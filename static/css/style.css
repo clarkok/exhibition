@@ -542,9 +542,9 @@ body.detail #wrapper {
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
-  -webkit-transition: color 0 0, width 0.3s 0, height 0.3s 0, margin-left 0.3s 0, margin-top 0.3s 0, border 0.3s 0, line-height 0.3s 0, z-index 0 0.3s;
-  -moz-transition: color 0 0, width 0.3s 0, height 0.3s 0, margin-left 0.3s 0, margin-top 0.3s 0, border 0.3s 0, line-height 0.3s 0, z-index 0 0.3s;
-  transition: color 0 0, width 0.3s 0, height 0.3s 0, margin-left 0.3s 0, margin-top 0.3s 0, border 0.3s 0, line-height 0.3s 0, z-index 0 0.3s;
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none;
 }
 #upload #container {
   opacity: 0;
@@ -557,6 +557,25 @@ body.detail #wrapper {
 }
 #upload #container.standby {
   position: fixed;
+  margin-top: -250px;
+  margin-left: -350px;
+}
+#upload #container.uploading {
+  width: 300px;
+  height: 300px;
+  left: 50%;
+  top: 50%;
+  -webkit-border-radius: 150px;
+  -moz-border-radius: 150px;
+  border-radius: 150px;
+  margin-left: -150px;
+  margin-top: -150px;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+#upload #container.uploading form {
+  display: none;
 }
 #upload #container #upload-img-wrapper {
   position: absolute;
@@ -638,6 +657,7 @@ body.detail #wrapper {
   font-size: 16px;
   color: #ff28a8;
   width: auto;
+  cursor: pointer;
 }
 #upload #container #upload-info #upload-info-list .upload-info-item textarea {
   height: 255px;
@@ -647,6 +667,10 @@ body.detail #wrapper {
   display: inline-block;
   margin: 0 1em;
   color: #ccc;
+  cursor: pointer;
+}
+#upload.clean-out {
+  opacity: 0;
 }
 #upload.show {
   color: #808080;
@@ -660,9 +684,9 @@ body.detail #wrapper {
   margin-top: -100px;
   line-height: 180px;
   border: 10px solid rgba(0,0,0,0.2);
-  -webkit-transition: color 0.3s 0.3s, width 0.3s 0, height 0.3s 0, margin-left 0.3s 0, margin-top 0.3s 0, border 0.3s 0, line-height 0.3s 0, z-index 0 0;
-  -moz-transition: color 0.3s 0.3s, width 0.3s 0, height 0.3s 0, margin-left 0.3s 0, margin-top 0.3s 0, border 0.3s 0, line-height 0.3s 0, z-index 0 0;
-  transition: color 0.3s 0.3s, width 0.3s 0, height 0.3s 0, margin-left 0.3s 0, margin-top 0.3s 0, border 0.3s 0, line-height 0.3s 0, z-index 0 0;
+  -webkit-transition: color 0.3s 0.3s, width 0.3s 0, height 0.3s 0, margin-left 0.3s 0, margin-top 0.3s 0, border 0.3s 0, line-height 0.3s 0, z-index 0 0, opacity 0.5s 0;
+  -moz-transition: color 0.3s 0.3s, width 0.3s 0, height 0.3s 0, margin-left 0.3s 0, margin-top 0.3s 0, border 0.3s 0, line-height 0.3s 0, z-index 0 0, opacity 0.5s 0;
+  transition: color 0.3s 0.3s, width 0.3s 0, height 0.3s 0, margin-left 0.3s 0, margin-top 0.3s 0, border 0.3s 0, line-height 0.3s 0, z-index 0 0, opacity 0.5s 0;
 }
 #upload.flat {
   z-index: 20;
@@ -676,9 +700,9 @@ body.detail #wrapper {
   color: transparent;
   background-color: rgba(0,0,0,0.3);
   border: 0 solid rgba(0,0,0,0.2);
-  -webkit-transition: color 0.3s 0.3s, width 3s 0, height 3s 0, margin-left 3s 0, margin-top 3s 0, border 3s 0, line-height 3s 0, z-index 0 0, background-color 3s 0;
-  -moz-transition: color 0.3s 0.3s, width 3s 0, height 3s 0, margin-left 3s 0, margin-top 3s 0, border 3s 0, line-height 3s 0, z-index 0 0, background-color 3s 0;
-  transition: color 0.3s 0.3s, width 3s 0, height 3s 0, margin-left 3s 0, margin-top 3s 0, border 3s 0, line-height 3s 0, z-index 0 0, background-color 3s 0;
+  -webkit-transition: color 0.3s 0.3s, width 3s 0, height 3s 0, margin-left 3s 0, margin-top 3s 0, border 3s 0, line-height 3s 0, z-index 0 0, background-color 3s 0, opacity 0.5s 0;
+  -moz-transition: color 0.3s 0.3s, width 3s 0, height 3s 0, margin-left 3s 0, margin-top 3s 0, border 3s 0, line-height 3s 0, z-index 0 0, background-color 3s 0, opacity 0.5s 0;
+  transition: color 0.3s 0.3s, width 3s 0, height 3s 0, margin-left 3s 0, margin-top 3s 0, border 3s 0, line-height 3s 0, z-index 0 0, background-color 3s 0, opacity 0.5s 0;
 }
 #upload.flat #container {
   opacity: 1;

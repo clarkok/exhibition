@@ -579,7 +579,7 @@ body.detail
     color: transparent
     overflow: hidden
     user-select: none
-    transition: color 0 0, width .3s 0, height .3s 0, margin-left .3s 0, margin-top .3s 0, border .3s 0, line-height .3s 0, z-index 0 .3s
+    transition: none
 
     #container
         opacity: 0
@@ -592,6 +592,21 @@ body.detail
 
         &.standby
             position: fixed
+            margin-top: -250px
+            margin-left: -350px
+
+        &.uploading
+            width: 300px
+            height: 300px
+            left: 50%
+            top: 50%
+            border-radius: 150px
+            margin-left: -150px
+            margin-top: -150px
+            transition: all .5s
+
+            form
+                display: none
 
         #upload-img-wrapper
             position: absolute
@@ -666,6 +681,7 @@ body.detail
                             font-size: 16px
                             color: #FF28A8
                             width: auto
+                            cursor: pointer
 
                     textarea
                         height: 255px
@@ -675,6 +691,10 @@ body.detail
                         display: inline-block
                         margin: 0 1em
                         color: #ccc
+                        cursor: pointer
+
+    &.clean-out
+        opacity: 0
 
     &.show
         color: grey
@@ -686,7 +706,7 @@ body.detail
         margin-top: -100px
         line-height: 180px
         border: 10px solid rgba(0, 0, 0, 0.2)
-        transition: color .3s .3s, width .3s 0, height .3s 0, margin-left .3s 0, margin-top .3s 0, border .3s 0, line-height .3s 0, z-index 0 0
+        transition: color .3s .3s, width .3s 0, height .3s 0, margin-left .3s 0, margin-top .3s 0, border .3s 0, line-height .3s 0, z-index 0 0, opacity .5s 0
 
     &.flat
         z-index: 20
@@ -698,7 +718,7 @@ body.detail
         color: transparent
         background-color: rgba(0, 0, 0, 0.3)
         border: 0 solid rgba(0, 0, 0, 0.2)
-        transition: color .3s .3s, width 3s 0, height 3s 0, margin-left 3s 0, margin-top 3s 0, border 3s 0, line-height 3s 0, z-index 0 0, background-color 3s 0
+        transition: color .3s .3s, width 3s 0, height 3s 0, margin-left 3s 0, margin-top 3s 0, border 3s 0, line-height 3s 0, z-index 0 0, background-color 3s 0, opacity .5s 0
 
         #container
             opacity: 1

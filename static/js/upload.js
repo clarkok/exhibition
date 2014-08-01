@@ -23,6 +23,11 @@ var UploadCtrl = function () {
     })
     .on('drop', function (e) {
         e.preventDefault();
+        if (w.username === undefined) {
+            alert('请先登录');
+            w.location.href = $('.login').attr('href');
+            return;
+        }
         _this.mask.removeClass('show');
         _this.wrapper.removeClass('show').addClass('pre-flat').addClass('flat');
         _this.container.removeClass('standby').css({
@@ -31,13 +36,13 @@ var UploadCtrl = function () {
         });
         setTimeout(function () {
             _this.container.addClass('standby').css({
-                marginTop: '-250px',
-                marginLeft: '-350px'
+                marginTop: '',
+                marginLeft: ''
             });
         }, 3000);
         console.log(e.originalEvent);
         if (e.originalEvent.dataTransfer.files.length > 1)
-            alert('Multply files uploading is currently not supported!');
+            alert('多文件上传尚不支持');
         _this.setup_image(e.originalEvent.dataTransfer.files[0]);
     })
     .on('dragleave', function (e) {
@@ -49,12 +54,16 @@ var UploadCtrl = function () {
         e.preventDefault();
         _this.upload();
     });
+
+    $('.cancel').on('click', function () {
+        _this.clean();
+    });
 };
 
 UploadCtrl.prototype.init = function () {
-    this.wrapper.removeClass('show flat');
+    this.wrapper.removeClass('show flat clean-out');
     this.mask.removeClass('show');
-    this.container.removeClass('standby');
+    this.container.removeClass('standby uploading');
     this.img_wrapper.empty();
 };
 
@@ -80,6 +89,7 @@ UploadCtrl.prototype.setup_image = function (file) {
 };
 
 UploadCtrl.prototype.upload = function () {
+    this.container.addClass('uploading');
     var data = new FormData();
     var _this = this;
 
@@ -89,7 +99,7 @@ UploadCtrl.prototype.upload = function () {
     data.append('detail', $('[name=detail]').val());
 
     var progress_wrapper = Progress.prototype.mk_progress_dom();
-    this.container.empty().append(progress_wrapper);
+    this.container.append(progress_wrapper);
     this.progress = new Progress(progress_wrapper);
 
     var xhr = new XMLHttpRequest();
@@ -100,6 +110,7 @@ UploadCtrl.prototype.upload = function () {
         if (data.code === 0) {
             _this.progress.animate_to(1, 1000, function () {
                 _this.progress.finish();
+                _this.clean();
             });
         }
     }, false);
@@ -110,6 +121,14 @@ UploadCtrl.prototype.upload = function () {
 
     this.progress.start();
     xhr.send(data);
+};
+
+UploadCtrl.prototype.clean = function () {
+    this.wrapper.addClass('clean-out');
+    var _this = this;
+    setTimeout(function () {
+        _this.init();
+    }, 500);
 };
 
 w.UploadCtrl = UploadCtrl;
