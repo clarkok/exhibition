@@ -72,7 +72,11 @@
                             </li>
                             <li class="upload-info-item">
                                 <label>作者</label>
+                                <?php if (isset($username)): ?>
                                 <input type="text" name="author" value="<?php echo $username; ?>" placeholder="在这里输入作者">
+                                <?php else: ?>
+                                <input type="test" name="author" placeholder="在这里输入作者">
+                                <?php endif; ?>
                             </li>
                             <li class="upload-info-item">
                                 <label>简介</label>
