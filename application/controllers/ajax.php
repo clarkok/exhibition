@@ -7,7 +7,26 @@ class Ajax extends CI_Controller {
     }
 
     function index () {
-        $this->load->view('index');
+        $this->load->model('User');
+        $username = $this->User->validate();
+        $data = array();
+        if ($username)
+            $data['username'] = $username;
+        $this->load->view('index', $data);
+    }
+
+    function login () {
+        if ($this->input->post('token')) {
+            $cookie = array(
+                'name'   => 'token',
+                'value'  => $this->input->post('token'),
+                'expire' => 7 * 86500
+            );
+
+            set_cookie($cookie);
+        }
+
+        redirect(site_url(), 'refresh');
     }
 
     function page($page_id) {
@@ -114,7 +133,19 @@ class Ajax extends CI_Controller {
     }
 
     function upload() {
-        // TODO auth
+        $this->load->model('User');
+        $username = $this->User->validate();
+        if (!$username) {
+            $data['code'] = 1;
+            $data['error'] = "尚未登录";
+            $this->load->view(
+                'json',
+                $pass
+            );
+
+            return;
+        }
+
         $config['upload_path'] = './uploads/';
         $config['allowed_types'] = 'gif|jpg|png';
         $config['override'] = TRUE;
@@ -157,9 +188,5 @@ class Ajax extends CI_Controller {
                 $pass
             );
         }
-    }
-
-    function test_upload() {
-        $this->load->view('upload');
     }
 }
