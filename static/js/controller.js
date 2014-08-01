@@ -11,6 +11,7 @@ var Controller = function () {
     this.loading = new LoadingBar();
     this.next_page = 0;
     this.router = new Router(this);
+    this.upload_ctrl = new UploadCtrl();
 
     w.back_flag = (w.location.hash === '');
 

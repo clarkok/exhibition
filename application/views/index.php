@@ -56,6 +56,37 @@
                 </ul>
             </div>
         </div>
+        <div id="upload-mask">
+        </div>
+        <div id="upload">
+            drop to upload
+            <div id="container">
+                <form id="upload-form" method="post" action="<?php echo site_url('/ajax/upload/'); ?>">
+                    <div id="upload-img-wrapper">
+                    </div>
+                    <div id="upload-info">
+                        <ul id="upload-info-list">
+                            <li class="upload-info-item">
+                                <label>标题</label>
+                                <input type="text" name="title" placeholder="在这里输入标题">
+                            </li>
+                            <li class="upload-info-item">
+                                <label>作者</label>
+                                <input type="text" name="author" value="<?php echo $username; ?>" placeholder="在这里输入作者">
+                            </li>
+                            <li class="upload-info-item">
+                                <label>简介</label>
+                                <textarea name="detail" placeholder="在这里输入简介"></textarea>
+                            </li>
+                            <li class="upload-info-item">
+                                <input type="submit" value="上传">
+                                <span class="cancel">取消</span>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
         <div id="wrapper">
             <div class="column">
             </div>
@@ -90,6 +121,7 @@
             <script src="<?php echo base_url('static/js/detail.js'); ?>"></script>
             <script src="<?php echo base_url('static/js/imgviewer.js'); ?>"></script>
             <script src="<?php echo base_url('static/js/router.js'); ?>"></script>
+            <script src="<?php echo base_url('static/js/upload.js'); ?>"></script>
             <script src="<?php echo base_url('static/js/controller.js'); ?>"></script>
             <script src="<?php echo base_url('static/js/script.js'); ?>"></script>
         <?php else: ?>

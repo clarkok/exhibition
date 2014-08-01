@@ -508,6 +508,181 @@ body.detail #wrapper {
   border-bottom: 1px solid #ff28a8;
   color: #ff28a8;
 }
+#upload-mask {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 50;
+}
+#upload-mask.show {
+  display: block;
+}
+#upload {
+  background-color: #fff;
+  text-align: center;
+  width: 0;
+  height: 0;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+  margin-left: 0;
+  margin-top: 0;
+  line-height: 0;
+  position: fixed;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 0 solid rgba(0,0,0,0.2);
+  z-index: -1;
+  color: transparent;
+  overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-transition: color 0 0, width 0.3s 0, height 0.3s 0, margin-left 0.3s 0, margin-top 0.3s 0, border 0.3s 0, line-height 0.3s 0, z-index 0 0.3s;
+  -moz-transition: color 0 0, width 0.3s 0, height 0.3s 0, margin-left 0.3s 0, margin-top 0.3s 0, border 0.3s 0, line-height 0.3s 0, z-index 0 0.3s;
+  transition: color 0 0, width 0.3s 0, height 0.3s 0, margin-left 0.3s 0, margin-top 0.3s 0, border 0.3s 0, line-height 0.3s 0, z-index 0 0.3s;
+}
+#upload #container {
+  opacity: 0;
+  width: 700px;
+  height: 500px;
+  left: 50%;
+  top: 50%;
+  background-color: #fff;
+  position: absolute;
+}
+#upload #container.standby {
+  position: fixed;
+}
+#upload #container #upload-img-wrapper {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  text-align: center;
+}
+#upload #container #upload-img-wrapper .vertical-helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+#upload #container #upload-img-wrapper img {
+  max-height: 100%;
+  max-width: 100%;
+  vertical-align: middle;
+}
+#upload #container #upload-info {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  right: 0;
+  top: 0;
+}
+#upload #container #upload-info #upload-info-list {
+  margin: 0;
+  padding: 0;
+  padding-top: 1em;
+  list-style: none;
+}
+#upload #container #upload-info #upload-info-list .upload-info-item {
+  display: block;
+  text-align: center;
+  position: relative;
+}
+#upload #container #upload-info #upload-info-list .upload-info-item label {
+  display: block;
+  padding-left: 1em;
+  color: #ff28a8;
+  border-bottom: 1px solid #ff28a8;
+  height: 2em;
+  line-height: 2em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-align: left;
+}
+#upload #container #upload-info #upload-info-list .upload-info-item input,
+#upload #container #upload-info #upload-info-list .upload-info-item textarea {
+  margin-top: 1em;
+  margin-left: 1em;
+  margin-right: 0;
+  padding-left: 1em;
+  display: block;
+  min-height: 2em;
+  line-height: 2em;
+  border-style: solid;
+  border-color: #ff28a8;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: transparent;
+  border-width: 0 0 0 1px;
+  text-align: left;
+  width: 338px;
+}
+#upload #container #upload-info #upload-info-list .upload-info-item input:focus,
+#upload #container #upload-info #upload-info-list .upload-info-item textarea:focus {
+  outline: 0;
+  border-left-width: 3px;
+}
+#upload #container #upload-info #upload-info-list .upload-info-item input[type=submit],
+#upload #container #upload-info #upload-info-list .upload-info-item textarea[type=submit] {
+  display: inline-block;
+  margin: 0 1em;
+  border: 0;
+  font-size: 16px;
+  color: #ff28a8;
+  width: auto;
+}
+#upload #container #upload-info #upload-info-list .upload-info-item textarea {
+  height: 255px;
+  resize: none;
+}
+#upload #container #upload-info #upload-info-list .upload-info-item .cancel {
+  display: inline-block;
+  margin: 0 1em;
+  color: #ccc;
+}
+#upload.show {
+  color: #808080;
+  z-index: 20;
+  width: 200px;
+  height: 200px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+  margin-left: -100px;
+  margin-top: -100px;
+  line-height: 180px;
+  border: 10px solid rgba(0,0,0,0.2);
+  -webkit-transition: color 0.3s 0.3s, width 0.3s 0, height 0.3s 0, margin-left 0.3s 0, margin-top 0.3s 0, border 0.3s 0, line-height 0.3s 0, z-index 0 0;
+  -moz-transition: color 0.3s 0.3s, width 0.3s 0, height 0.3s 0, margin-left 0.3s 0, margin-top 0.3s 0, border 0.3s 0, line-height 0.3s 0, z-index 0 0;
+  transition: color 0.3s 0.3s, width 0.3s 0, height 0.3s 0, margin-left 0.3s 0, margin-top 0.3s 0, border 0.3s 0, line-height 0.3s 0, z-index 0 0;
+}
+#upload.flat {
+  z-index: 20;
+  width: 5000px;
+  height: 5000px;
+  margin-left: -2500px;
+  margin-top: -2500px;
+  -webkit-border-radius: 2500px;
+  -moz-border-radius: 2500px;
+  border-radius: 2500px;
+  color: transparent;
+  background-color: rgba(0,0,0,0.3);
+  border: 0 solid rgba(0,0,0,0.2);
+  -webkit-transition: color 0.3s 0.3s, width 3s 0, height 3s 0, margin-left 3s 0, margin-top 3s 0, border 3s 0, line-height 3s 0, z-index 0 0, background-color 3s 0;
+  -moz-transition: color 0.3s 0.3s, width 3s 0, height 3s 0, margin-left 3s 0, margin-top 3s 0, border 3s 0, line-height 3s 0, z-index 0 0, background-color 3s 0;
+  transition: color 0.3s 0.3s, width 3s 0, height 3s 0, margin-left 3s 0, margin-top 3s 0, border 3s 0, line-height 3s 0, z-index 0 0, background-color 3s 0;
+}
+#upload.flat #container {
+  opacity: 1;
+}
 body.ie .detail-item {
   opacity: 1 !important;
   -webkit-transform: rotate(0);
