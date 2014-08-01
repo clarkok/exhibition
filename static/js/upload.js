@@ -44,6 +44,11 @@ var UploadCtrl = function () {
         $(this).removeClass('show');
         _this.wrapper.removeClass('show');
     });
+
+    $('#upload-form').on('submit', function (e) {
+        e.preventDefault();
+        _this.upload();
+    });
 };
 
 UploadCtrl.prototype.init = function () {
@@ -75,6 +80,36 @@ UploadCtrl.prototype.setup_image = function (file) {
 };
 
 UploadCtrl.prototype.upload = function () {
+    var data = new FormData();
+    var _this = this;
+
+    data.append('file', this.file);
+    data.append('title', $('[name=title]').val());
+    data.append('author', $('[name=author]').val());
+    data.append('detail', $('[name=detail]').val());
+
+    var progress_wrapper = Progress.prototype.mk_progress_dom();
+    this.container.empty().append(progress_wrapper);
+    this.progress = new Progress(progress_wrapper);
+
+    var xhr = new XMLHttpRequest();
+
+    xhr.open('POST', w.site_url + '/ajax/upload', true);
+    xhr.addEventListener('load', function (e) {
+        var data = JSON.parse(xhr.responseText);
+        if (data.code === 0) {
+            _this.progress.animate_to(1, 1000, function () {
+                _this.progress.finish();
+            });
+        }
+    }, false);
+
+    xhr.upload.addEventListener('progress', function (e) {
+        _this.progress.animate_to(e.loaded / e.total);
+    }, false);
+
+    this.progress.start();
+    xhr.send(data);
 };
 
 w.UploadCtrl = UploadCtrl;
